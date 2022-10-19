@@ -2,6 +2,10 @@ package jp.mydns.kokoichi0206.fcm.android
 
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
+import jp.mydns.kokoichi0206.fcm.FCMSDK
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class FCMService : FirebaseMessagingService() {
 
@@ -16,6 +20,9 @@ class FCMService : FirebaseMessagingService() {
     }
 
     private fun sendRegistrationToServer(token: String) {
-        // TODO: Send to server
+        CoroutineScope(Dispatchers.IO).launch {
+            val sdk = FCMSDK()
+            sdk.register(token)
+        }
     }
 }

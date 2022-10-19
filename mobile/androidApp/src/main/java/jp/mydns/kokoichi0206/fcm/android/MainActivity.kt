@@ -12,11 +12,15 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 
 
 class MainActivity : ComponentActivity() {
+
+    private val viewModel = MainViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +31,20 @@ class MainActivity : ComponentActivity() {
         setContent {
             Surface(
                 modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colors.background
+                color = MaterialTheme.colors.background,
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .clickable {
-                        }
-                )
+                            viewModel.getCurrentFCMToken()
+                        },
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = "current_token:\n${viewModel.state.token}"
+                    )
+                }
             }
         }
     }
