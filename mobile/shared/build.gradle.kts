@@ -19,7 +19,7 @@ kotlin {
 
     val coroutinesVersion = "1.5.0-native-mt"
     // https://mvnrepository.com/artifact/io.ktor/ktor-client-core
-    val ktorVersion = "2.1.0"
+    val ktorVersion = "2.0.0"
     sourceSets {
         val commonMain by getting {
             dependencies {
