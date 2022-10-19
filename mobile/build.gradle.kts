@@ -22,3 +22,17 @@ allprojects {
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
+
+// Workaround for https://youtrack.jetbrains.com/issue/KT-51970
+afterEvaluate {
+    afterEvaluate {
+        tasks.configureEach {
+            if (
+                name.startsWith("compile")
+                && name.endsWith("KotlinMetadata")
+            ) {
+                enabled = false
+            }
+        }
+    }
+}
