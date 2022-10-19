@@ -66,9 +66,9 @@ kotlin {
 
 android {
     namespace = "jp.mydns.kokoichi0206.fcm"
-    compileSdk = 32
+    compileSdk = 33
     defaultConfig {
         minSdk = 26
-        targetSdk = 32
+        targetSdk = 33
     }
 }
